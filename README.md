@@ -8,8 +8,11 @@ WIP
 ### Usage
 
 ``waybarctl reload`` - reload Waybar.
+
 ``waybarctl theme <themename>`` - set a waybar theme.
+
 ``waybarctl theme list`` to list all available themes.
+
 ``waybarctl theme remove`` the default Waybar theme. Deactives the current one.
 
 You can create themes in ``~/.config/waybar/themes`` directory.
