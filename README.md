@@ -11,9 +11,9 @@ WIP
 
 ``waybarctl theme <themename>`` - set a waybar theme.
 
-``waybarctl theme list`` to list all available themes.
+``waybarctl theme list`` - list all available themes.
 
-``waybarctl theme remove`` the default Waybar theme. Deactives the current one.
+``waybarctl theme remove`` - deactivate the current theme and fallback to Waybar default.
 
 You can create themes in ``~/.config/waybar/themes`` directory.
 You have to create a directory for each theme and place the configs and styles inside the directory.
