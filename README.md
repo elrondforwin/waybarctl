@@ -8,6 +8,18 @@ Installation script for most distros. Requires ``curl``
 ```
 curl https://raw.githubusercontent.com/elrondforwin/waybarctl/refs/heads/main/install-waybarctl.sh | bash
 ```
+
+### Updating
+Run the install script again. It will update it if there is an update.
+```
+curl https://raw.githubusercontent.com/elrondforwin/waybarctl/refs/heads/main/install-waybarctl.sh | bash
+```
+### Uninstallation
+```
+rm ~/.local/bin/waybarctl.sh
+```
+Also remove the alias line in your preffered shell if you want. Maybe I will add an uninstallation script in the future.
+
 ### Usage
 
 ``waybarctl reload`` - reload Waybar.
