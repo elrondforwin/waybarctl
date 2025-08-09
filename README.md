@@ -3,7 +3,9 @@
 ``waybarctl`` is a simple bash script that makes Waybar theme switching easier through terminal commands.
 
 ### Installation
-WIP
+
+Installation script for most distros. Requires ``curl``
+```curl https://raw.githubusercontent.com/elrondforwin/waybarctl/refs/heads/main/install-waybarctl.sh | bash```
 
 ### Usage
 
