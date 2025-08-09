@@ -6,7 +6,7 @@ configdir="/home/$USER/.config/waybar/"
 themedir="/home/$USER/.config/waybar/themes/"
 
 case "$1" in
-  help|theme|reload) 
+  help|theme|reload)
   ;;
   *)
   echo "Command not found. Type 'waybarctl help' for help."
