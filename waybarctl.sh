@@ -88,6 +88,7 @@ if [ "$1" = "theme" ]; then
         do
           rm -r "$links"
         done
+        reload
         echo "Succesfully deactivated the $2 theme. Falling back to default one."
         exit 1
     fi
