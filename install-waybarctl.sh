@@ -8,8 +8,14 @@ if [ ! -d "$installdir" ]; then
     echo "Successfully created installdir on $installdir"
 fi
 
+if [ -f /home/$USER/.local/bin/waybarctl.sh ]; then
+    rm /home/$USER/.local/bin/waybarctl.sh
+    echo "Found existing waybarctl. Removing the old one."
+fi
+
 touch /home/$USER/.local/bin/waybarctl.sh
-curl https://raw.githubusercontent.com/elrondforwin/waybarctl/refs/heads/main/waybarctl.sh > /home/$USER/.local/bin/waybarctl.sh
+curl https://raw.githubusercontent.com/elrondforwin/waybarctl/refs/heads/main/waybarctl.sh >> /home/$USER/.local/bin/waybarctl.sh
+
 if [ -f /home/$USER/.local/bin/waybarctl.sh ]; then
     if [ -f /bin/bash ]; then
         if ! grep -Fxq "alias waybarctl='bash /home/$USER/.local/bin/waybarctl.sh'" /home/$USER/.bashrc; then
