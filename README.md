@@ -10,7 +10,7 @@ curl https://raw.githubusercontent.com/elrondforwin/waybarctl/refs/heads/main/in
 ```
 
 ### Updating
-Run the install script again. It will update it if there is an update.
+Run the install script again. It will update it.
 ```
 curl https://raw.githubusercontent.com/elrondforwin/waybarctl/refs/heads/main/install-waybarctl.sh | bash
 ```
