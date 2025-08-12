@@ -16,4 +16,5 @@ fi
 touch /home/$USER/.local/bin/waybarctl
 echo "Installing waybarctl..."
 curl -fsSL https://raw.githubusercontent.com/elrondforwin/waybarctl/refs/heads/main/waybarctl >>/home/$USER/.local/bin/waybarctl
+chmod +x /home/$USER/.local/bin/waybarctl
 echo "Succesfully installed waybarctl."
