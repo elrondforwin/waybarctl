@@ -16,9 +16,8 @@ curl -fsSL https://raw.githubusercontent.com/elrondforwin/waybarctl/refs/heads/m
 ```
 ### Uninstallation
 ```
-rm ~/.local/bin/waybarctl.sh
+rm ~/.local/bin/waybarctl
 ```
-Also remove the alias line in your preffered shell if you want. Maybe I will add an uninstallation script in the future.
 
 ### Usage
 
