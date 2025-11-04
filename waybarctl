@@ -6,9 +6,8 @@ configdir="/home/$USER/.config/waybar/"
 themedir="/home/$USER/.config/waybar/themes/"
 
 case "$1" in
-  help|theme|reload)
-  ;;
-  *)
+help | theme | reload) ;;
+*)
   echo "Command not found. Type 'waybarctl help' for help."
   ;;
 esac
@@ -19,13 +18,15 @@ esac
 
 # reload function
 reload() {
-  if pgrep -x "waybar" > /dev/null; then
+  if pgrep -x "waybar" >/dev/null; then
     killall -q waybar
-    while pgrep -x waybar > /dev/null; do sleep 1; done
-    waybar &
+    while pgrep -x waybar >/dev/null; do sleep 1; done
+    waybar &>/dev/null &
+    disown
     echo "Waybar succesfully reloaded."
   else
-    waybar &
+    waybar &>/dev/null &
+    disown
     echo "Waybar is not running. Starting waybar."
   fi
 }
@@ -71,37 +72,30 @@ if [ "$1" = "theme" ]; then
     echo "Successfully created themedir on $themedir."
   fi
 
-  # if second argument (theme) is set, link their files to waybarconfig 
+  # if second argument (theme) is set, link their files to waybarconfig
   if [ "$2" ]; then
     # list all available themes
     if [ "$2" = "list" ]; then
-      echo ""
-      echo "Available themes:"
-      echo ""
       ls -w 1 $themedir
-      echo ""
-      exit 1
+      exit 0
     fi
     # remove current theme
     if [ "$2" = "remove" ]; then
-        for links in $(find /home/$USER/.config/waybar -maxdepth 1 -type l)
-        do
-          rm -r "$links"
-        done
-        reload
-        echo "Succesfully deactivated the $2 theme. Falling back to default one."
-        exit 1
+      for links in $(find /home/$USER/.config/waybar -maxdepth 1 -type l); do
+        rm -r "$links"
+      done
+      reload
+      echo "Succesfully deactivated the $2 theme. Falling back to default one."
+      exit 0
     fi
     # if the given theme is valid, change to this theme.
     if [ -d "/home/$USER/.config/waybar/themes/$2" ]; then
-      for f in $(find /home/$USER/.config/waybar/themes/$2 -mindepth 1 -maxdepth 1 -type f -printf "%f\n")
-        do
-          ln -sf "/home/$USER/.config/waybar/themes/$2/$f" "$configdir"
-        done
-      for f in $(find /home/$USER/.config/waybar/themes/$2 -mindepth 1 -maxdepth 1 -type d -printf "%f\n")
-        do
-          ln -sf "/home/$USER/.config/waybar/themes/$2/$f" "$configdir"
-        done
+      for f in $(find /home/$USER/.config/waybar/themes/$2 -mindepth 1 -maxdepth 1 -type f -printf "%f\n"); do
+        ln -sf "/home/$USER/.config/waybar/themes/$2/$f" "$configdir"
+      done
+      for f in $(find /home/$USER/.config/waybar/themes/$2 -mindepth 1 -maxdepth 1 -type d -printf "%f\n"); do
+        ln -sf "/home/$USER/.config/waybar/themes/$2/$f" "$configdir"
+      done
       reload
       echo "Theme succesfully updated to $2"
     else
