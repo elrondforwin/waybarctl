@@ -1,6 +1,6 @@
 # waybarctl
 
-``waybarctl`` is a simple bash script that makes Waybar theme switching easier through terminal commands.
+``waybarctl`` is a simple bash script that makes Waybar theme switching easier through CLI commands.
 
 ### Installation
 
@@ -8,27 +8,26 @@ Installation script for most distros. Requires ``curl``
 ```
 curl -fsSL https://raw.githubusercontent.com/elrondforwin/waybarctl/refs/heads/main/install-waybarctl.sh | bash
 ```
+> [!NOTE]
+> You need to add ``~/.local/bin`` to your $PATH variable if not exists. It is a good practice for using this type of scripts as user.
 
 ### Updating
 Run the install script again. It will update it.
-```
+```bash
 curl -fsSL https://raw.githubusercontent.com/elrondforwin/waybarctl/refs/heads/main/install-waybarctl.sh | bash
 ```
 ### Uninstallation
-```
-rm ~/.local/bin/waybarctl
+```bash
+rm -rf ~/.local/bin/waybarctl
 ```
 
 ### Usage
-
-``waybarctl reload`` - reload Waybar.
-
-``waybarctl theme <themename>`` - set a waybar theme.
-
-``waybarctl theme list`` - list all available themes.
-
-``waybarctl theme remove`` - deactivate the current theme and fallback to Waybar default.
-
+```bash
+waybarctl reload # reload Waybar.
+waybarctl theme <themename> # set a waybar theme.
+waybarctl theme list # list all available themes.
+waybarctl theme remove # deactivate the current theme and fallback to Waybar default.
+```
 You can create themes in ``~/.config/waybar/themes`` directory.
 You have to create a directory for each theme and place the configs and styles inside the directory.
 
@@ -49,3 +48,6 @@ You have to create a directory for each theme and place the configs and styles i
         └── style.css
 ```
 In this case, ``waybarctl theme gruvbox`` command will apply ``gruvbox`` theme to waybar and automatically reload it.
+
+## To Do
+- [ ] Add a PKGBUILD for installation.
